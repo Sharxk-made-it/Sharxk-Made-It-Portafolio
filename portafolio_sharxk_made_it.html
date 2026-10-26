@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHARXK MADE IT | Desarrollo Web y Software</title>
+    <!-- Tailwind CSS para los estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Configuración de colores personalizados y tipografía en Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#0B0D0F',
+                        bone: '#F4F1E9',
+                        lime: '#B9F23B',
+                        steel: '#7A7F87',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Cuadrícula tecnológica de fondo */
+        body {
+            background-color: #0B0D0F;
+            background-size: 50px 50px;
+            background-image:
+                linear-gradient(to right, rgba(122, 127, 135, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(122, 127, 135, 0.07) 1px, transparent 1px);
+        }
+
+        /* Utilidades para diseño 2D Flat */
+        .flat-card {
+            border: 2px solid #7A7F87;
+            transition: all 0.3s ease;
+        }
+
+        .flat-card:hover {
+            border-color: #B9F23B;
+            transform: translateY(-5px);
+        }
+
+        .flat-button {
+            border: 2px solid #B9F23B;
+            transition: all 0.3s ease;
+        }
+
+        .flat-button:hover {
+            background-color: transparent;
+            color: #B9F23B;
+        }
+
+        .flat-input {
+            border: 2px solid #7A7F87;
+            background-color: #0B0D0F;
+            color: #F4F1E9;
+            transition: border-color 0.3s ease;
+        }
+
+        .flat-input:focus {
+            outline: none;
+            border-color: #B9F23B;
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0D0F;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #7A7F87;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B9F23B;
+        }
+    </style>
+</head>
+
+
+
+<body class="text-bone font-sans antialiased overflow-x-hidden relative">
+
+    <!-- 1. Header & Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-charcoal/90 backdrop-blur-md border-b border-steel/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-lime font-bold text-3xl">&lt;/&gt;</span>
+                    <div class="flex flex-col">
+                        <span
+                            class="text-bone font-extrabold text-xl tracking-widest leading-none uppercase">Sharxk</span>
+                        <span class="text-steel text-[0.65rem] tracking-[0.3em] uppercase mt-1">Made It</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio"
+                        class="text-bone hover:text-lime transition-colors text-sm font-semibold tracking-wide uppercase">Inicio</a>
+                    <a href="#servicios"
+                        class="text-bone hover:text-lime transition-colors text-sm font-semibold tracking-wide uppercase">Servicios</a>
+                    <a href="#portafolio"
+                        class="text-bone hover:text-lime transition-colors text-sm font-semibold tracking-wide uppercase">Portafolio</a>
+                    <a href="#contacto"
+                        class="text-bone hover:text-lime transition-colors text-sm font-semibold tracking-wide uppercase">Contacto</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-bone hover:text-lime focus:outline-none">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-b border-steel/30">
+            <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+                <a href="#inicio"
+                    class="block px-3 py-2 text-bone hover:text-lime text-base font-semibold uppercase">Inicio</a>
+                <a href="#servicios"
+                    class="block px-3 py-2 text-bone hover:text-lime text-base font-semibold uppercase">Servicios</a>
+                <a href="#portafolio"
+                    class="block px-3 py-2 text-bone hover:text-lime text-base font-semibold uppercase">Portafolio</a>
+                <a href="#contacto"
+                    class="block px-3 py-2 text-bone hover:text-lime text-base font-semibold uppercase">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="inicio"
+        class="pt-32 pb-20 md:pt-48 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div class="inline-block border border-lime/50 bg-lime/10 px-4 py-1.5 mb-6">
+            <span class="text-lime text-xs font-bold tracking-widest uppercase">Agencia de Tecnología</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-bone mb-6 uppercase tracking-tight leading-tight">
+            Desarrollo Web <br>
+            <span class="text-lime">Y Software</span>
+        </h1>
+        <p class="text-steel md:text-xl max-w-2xl mb-10">
+            Soluciones digitales a la medida para tu negocio. Transformamos ideas en experiencias web rápidas,
+            funcionales y con diseño de alto impacto.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contacto"
+                class="bg-lime text-charcoal font-bold py-3 px-8 uppercase tracking-wide flat-button hover:bg-transparent hover:text-lime">
+                Cotiza tu proyecto
+            </a>
+            <a href="#portafolio"
+                class="bg-transparent text-bone border-2 border-steel hover:border-bone font-bold py-3 px-8 uppercase tracking-wide transition-colors">
+                Ver trabajos
+            </a>
+        </div>
+    </section>
+
+    <!-- 3. Services Section -->
+    <section id="servicios" class="py-20 bg-charcoal/50 border-t border-b border-steel/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold text-bone mb-4 uppercase">Servicios Especializados</h2>
+                <div class="h-1 w-20 bg-lime mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-charcoal p-8 flat-card group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="text-6xl text-lime font-mono">01</span>
+                    </div>
+                    <div
+                        class="w-12 h-12 mb-6 border-2 border-lime flex items-center justify-center text-lime text-xl font-bold">
+                        &lt;/&gt;
+                    </div>
+                    <h3 class="text-xl font-bold text-bone mb-3 uppercase">Diseño Web a Medida</h3>
+                    <p class="text-steel text-sm leading-relaxed">
+                        Sitios web únicos, rápidos y responsivos. Diseñamos plataformas que reflejan la identidad de tu
+                        marca y convierten visitantes en clientes reales.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-charcoal p-8 flat-card group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="text-6xl text-lime font-mono">02</span>
+                    </div>
+                    <div
+                        class="w-12 h-12 mb-6 border-2 border-lime flex items-center justify-center text-lime text-xl font-bold">
+                        QR
+                    </div>
+                    <h3 class="text-xl font-bold text-bone mb-3 uppercase">Menús Digitales</h3>
+                    <p class="text-steel text-sm leading-relaxed">
+                        Olvídate de los PDFs. Creamos cartas web interactivas, rápidas de cargar y fáciles de actualizar
+                        al instante para restaurantes y cafeterías.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-charcoal p-8 flat-card group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="text-6xl text-lime font-mono">03</span>
+                    </div>
+                    <div
+                        class="w-12 h-12 mb-6 border-2 border-lime flex items-center justify-center text-lime text-xl font-bold">
+                        { }
+                    </div>
+                    <h3 class="text-xl font-bold text-bone mb-3 uppercase">Soluciones Software</h3>
+                    <p class="text-steel text-sm leading-relaxed">
+                        Desarrollo de sistemas personalizados para optimizar los procesos de tu negocio. Desde
+                        inventarios hasta plataformas de gestión interna.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Portfolio Section -->
+    <section id="portafolio" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold text-bone mb-4 uppercase">Nuestro Trabajo</h2>
+                <div class="h-1 w-20 bg-lime"></div>
+            </div>
+            <p class="text-steel max-w-md text-sm md:text-right">
+                Explora cómo hemos ayudado a otros negocios a establecer una presencia digital fuerte, profesional y
+                orientada a resultados.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Project 1 -->
+            <a href="https://sharxk-made-it.github.io/COSME-ALE/" target="_blank" rel="noopener noreferrer"
+                class="group cursor-pointer block">
+                <div
+                    class="border-2 border-steel overflow-hidden relative mb-4 group-hover:border-lime transition-colors">
+                    <!-- Placeholder Image (Can be replaced with actual screenshot) -->
+                    <img src="https://placehold.co/800x600/0B0D0F/F4F1E9?text=Alexa+Villalvazo\nCosmetóloga"
+                        alt="Proyecto Alexa Villalvazo"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                    <div class="absolute top-4 left-4 bg-lime text-charcoal text-xs font-bold px-3 py-1 uppercase">
+                        Web Corporativa
+                    </div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-2xl font-bold text-bone uppercase group-hover:text-lime transition-colors">Alexa
+                            Villalvazo</h3>
+                        <p class="text-steel text-sm mt-1">Sitio Web para Cosmetóloga y agendamiento.</p>
+                    </div>
+                    <div class="text-lime font-mono font-bold">2026</div>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="https://sharxk-made-it.github.io/OCAMPO_COFFE/" target="_blank" rel="noopener noreferrer"
+                class="group cursor-pointer block">
+                <div
+                    class="border-2 border-steel overflow-hidden relative mb-4 group-hover:border-lime transition-colors">
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/800x600/0B0D0F/F4F1E9?text=Ocampo+Café\nMenú+Digital"
+                        alt="Proyecto Ocampo Café"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+                    <div class="absolute top-4 left-4 bg-lime text-charcoal text-xs font-bold px-3 py-1 uppercase">
+                        Menú Digital
+                    </div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-2xl font-bold text-bone uppercase group-hover:text-lime transition-colors">
+                            Ocampo Café</h3>
+                        <p class="text-steel text-sm mt-1">Menú web interactivo con QR para cafetería local.</p>
+                    </div>
+                    <div class="text-lime font-mono font-bold">2026</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- 5. Contact Section -->
+        <section id="contacto" class="py-20 bg-lime text-charcoal relative">
+            <!-- Cuadrícula en versión clara para contraste -->
+            <div class="absolute inset-0 opacity-10"
+                style="background-size: 50px 50px; background-image: linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px);">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Info -->
+                    <div class="flex flex-col justify-center">
+                        <h2 class="text-4xl md:text-6xl font-extrabold uppercase mb-6 leading-tight">
+                            ¿Listo para <br>digitalizar <br>tu negocio?
+                        </h2>
+                        <p class="text-charcoal/80 mb-8 font-semibold max-w-md">
+                            Mándanos un mensaje y empecemos a construir la plataforma que tu marca necesita. Nos
+                            encontramos
+                            en Tamazula de Gordiano, Jalisco, pero trabajamos para todo México.
+                        </p>
+                        <div class="space-y-4">
+                            <a href="mailto:sharxk.madeit@gmail.com"
+                                class="flex items-center gap-3 text-charcoal font-bold hover:opacity-70 transition-opacity">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                sharxk.madeit@gmail.com
+                            </a>
+
+                            <!-- Enlace de Instagram actualizado -->
+                            <a href="https://www.instagram.com/sharxk.madeit" target="_blank" rel="noopener noreferrer"
+                                class="flex items-center gap-3 text-charcoal font-bold hover:opacity-70 transition-opacity">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                Instagram: @sharxk.madeit
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="bg-charcoal p-8 md:p-10 border-4 border-charcoal shadow-2xl">
+                        <form id="contact-form" class="space-y-6">
+                            <h3 class="text-bone text-2xl font-bold uppercase mb-4">Cotiza tu proyecto</h3>
+
+                            <div class="flex flex-col gap-1">
+                                <label class="text-steel text-sm uppercase tracking-wide font-bold">Nombre o
+                                    Negocio</label>
+                                <input type="text" required class="flat-input w-full p-3 font-mono"
+                                    placeholder="Ej. Ocampo Café">
+                            </div>
+
+                            <div class="flex flex-col gap-1">
+                                <label class="text-steel text-sm uppercase tracking-wide font-bold">Correo o
+                                    WhatsApp</label>
+                                <input type="text" required class="flat-input w-full p-3 font-mono"
+                                    placeholder="Para poder contactarte...">
+                            </div>
+
+                            <div class="flex flex-col gap-1">
+                                <label class="text-steel text-sm uppercase tracking-wide font-bold">¿Qué
+                                    necesitas?</label>
+                                <textarea rows="4" required class="flat-input w-full p-3 font-mono resize-none"
+                                    placeholder="Cuéntanos un poco sobre lo que tienes en mente (Sitio web, menú, tienda...)"></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-lime text-charcoal font-extrabold text-lg py-4 uppercase tracking-wider border-2 border-lime hover:bg-charcoal hover:text-lime transition-colors mt-4">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#050607] py-8 text-center border-t border-steel/20">
+            <div class="flex flex-col items-center justify-center gap-4">
+                <div class="text-lime font-bold text-2xl">&lt;/&gt; SHARXK</div>
+                <p class="text-steel text-sm uppercase tracking-widest">Desarrollo Web & Software</p>
+                <p class="text-steel/50 text-xs mt-4">© 2026 SHARXK MADE IT. Todos los derechos reservados. Tamazula de
+                    Gordiano, Jalisco.</p>
+            </div>
+        </footer>
+
+        <!-- JavaScript para interactividad básica -->
+        <script>
+            // Funcionalidad Menú Móvil
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Cerrar menú móvil al hacer click en un enlace
+            const mobileLinks = menu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            // Simulación envío de formulario (Evita recargar la página)
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button');
+                const originalText = btn.innerText;
+
+                btn.innerText = 'ENVIANDO...';
+                btn.classList.replace('bg-lime', 'bg-steel');
+                btn.classList.replace('text-charcoal', 'text-bone');
+                btn.classList.replace('border-lime', 'border-steel');
+
+                // Simular petición
+                setTimeout(() => {
+                    btn.innerText = '¡MENSAJE ENVIADO! ✓';
+                    btn.classList.replace('bg-steel', 'bg-lime');
+                    btn.classList.replace('text-bone', 'text-charcoal');
+                    btn.classList.replace('border-steel', 'border-lime');
+                    form.reset();
+
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                    }, 3000);
+                }, 1500);
+            });
+        </script>
+
+        <script>
+            document.getElementById('contact-form').addEventListener('submit', function (e) {
+                e.preventDefault(); // Evita que la página se recargue
+
+                // Obtener los valores de los inputs
+                const nombre = this.querySelector('input[placeholder="Ej. Ocampo Café"]').value;
+                const contacto = this.querySelector('input[placeholder="Para poder contactarte..."]').value;
+                const mensaje = this.querySelector('textarea').value;
+
+                // Tu número de WhatsApp de SHARXK (con código de país, ej. 52 para México)
+                const telefono = "523412053867";
+
+                // Armar el texto del mensaje
+                const texto = `Hola SHARXK! Soy ${nombre}.%0AContacto: ${contacto}%0A%0ANecesito: ${mensaje}`;
+
+                // Redirigir a WhatsApp
+                window.open(`https://wa.me/${telefono}?text=${texto}`, '_blank');
+            });
+        </script>
+</body>
+
+</html>
+</body>
+
+
+
+</html>
